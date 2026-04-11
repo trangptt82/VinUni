@@ -101,6 +101,13 @@ To make your labs accessible to students:
 
 Before sharing a lab with the entire class or teammate, it is highly recommended to run a local test to verify the flow and formatting.
 
+### Pre-Testing Checklist:
+Before running the commands below, ensure:
+- [ ] **Go** is installed (`go version` returns a result).
+- [ ] **Claat** is installed and in your `PATH` (`claat` command is recognized).
+- [ ] You are currently in the **root directory** of the `VinUni` project.
+- [ ] The folder **`codelabs/`** exists and contains the `.md` file you want to test.
+
 ### Step-by-Step Local Test:
 
 1.  **Export the Codelab**:
