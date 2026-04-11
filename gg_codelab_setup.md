@@ -94,3 +94,25 @@ To make your labs accessible to students:
 3. Push this directory to your `main` branch.
 4. Go to **Settings > Pages** on GitHub and set the source to your `main` branch.
 5. Your lab will be live at `https://appsheetway.github.io/VinUni/day-10-data-observability`.
+
+---
+
+## 6. Local Testing & Verification
+
+Before sharing a lab with the entire class or teammate, it is highly recommended to run a local test to verify the flow and formatting.
+
+### Step-by-Step Local Test:
+
+1.  **Export the Codelab**:
+    ```bash
+    claat export codelabs/day10-data-observability.md
+    ```
+2.  **Start the Local Server**:
+    ```bash
+    claat serve
+    ```
+3.  **View in Browser**:
+    The command will provide a local address (usually `http://localhost:9090`). Open this in your browser to see the interactive lab.
+
+### Feedback for Team Members:
+If you are asking a teammate to test your lab, ensure they have **Go** and **Claat** installed (see Section 1). They can then pull your latest changes and run the local test steps above.
