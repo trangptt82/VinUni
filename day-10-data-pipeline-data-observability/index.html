@@ -27,16 +27,82 @@
                   environment="web"
                   feedback-link="">
     
-      <google-codelab-step label="Introduction" duration="0">
+      <google-codelab-step label="Introduction: The Digestive System of AI" duration="0">
         <p>Duration: 0:05:00</p>
-<p>In this session we explore the Digestive System metaphor for data pipelines.</p>
+<p>In this session, we explore the Digestive System metaphor for data pipelines:</p>
+<p>- Ingestion = Eating (An vao)</p>
+<p>- Processing = Digestion (Tieu hoa / Chuyen hoa)</p>
+<p>- Observability = Periodic Health Checks (Di kham bac si dinh ky)</p>
+<p>- AI Agent = The Brain (Can nang luong sach de suy nghi dung)</p>
+<p>Remember: An AI Agent needs high-quality data to avoid hallucinations. &#34;Garbage In, Professional Garbage Out.&#34;</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Key Concepts" duration="0">
+      <google-codelab-step label="Key Concepts &amp; Guru Q&amp;A" duration="0">
         <p>Duration: 0:10:00</p>
-<p>Why use tools like Airbyte or dbt? Scripting works for one source but becomes a maintenance nightmare at scale.</p>
+<p>Why use tools like Airbyte or dbt?</p>
+<p>Scripting works for one source, but it becomes a maintenance nightmare at scale. Tools provide standards and save hundreds of hours when APIs change.</p>
+<p>Can LLMs handle noisy data?</p>
+<p>LLMs are smart but prone to hallucination. If input data is wrong, they will confidently provide a worthless answer.</p>
+<p>How to spot a sick pipeline?</p>
+<p>Use observability metrics! If volume drops from 10,000 to 10 records, the code might not crash, but the data is broken.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Lab: Data Quality Impact on AI Agents" duration="0">
+        <p>Duration: 0:15:00</p>
+<p>In this lab, we compare how an AI Agent (RAG-based) responds to Clean vs. Garbage data.</p>
+<p>Step A: Generate Garbage Data</p>
+<p>We need to create a Poisoned dataset to test our Agent&#39;s limits.</p>
+<p>Run the following code in Google Colab:</p>
+<p>import csv</p>
+<p>def generate_garbage_data():</p>
+<p>    data = [</p>
+<p>        [&#39;id&#39;, &#39;product&#39;, &#39;price&#39;, &#39;category&#39;],</p>
+<p>        [1, &#39;Laptop&#39;, 1200, &#39;electronics&#39;],</p>
+<p>        [1, &#39;Banana&#39;, 2, &#39;fruit&#39;],</p>
+<p>        [2, &#39;Broken Chair&#39;, &#39;ten dollars&#39;, &#39;furniture&#39;],</p>
+<p>        [3, &#39;Nuclear Reactor&#39;, 999999, &#39;electronics&#39;],</p>
+<p>        [None, &#39;Ghost Item&#39;, 0, None],</p>
+<p>    ]</p>
+<p>    with open(&#39;garbage_data.csv&#39;, &#39;w&#39;, newline=&#39;&#39;) as f:</p>
+<p>        writer = csv.writer(f)</p>
+<p>        writer.writerows(data)</p>
+<p>    print(&#34;garbage_data.csv has been created.&#34;)</p>
+<p>generate_garbage_data()</p>
+<p>Note: Row 1 and 2 have duplicate ID = 1. Row 3 has price as text instead of number. Row 4 has extreme outlier price. Row 5 has null values.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Step B: Testing the Agent" duration="0">
+        <p>Duration: 0:10:00</p>
+<p>Now simulate the Agent response using the Knowledge Base (the CSV you just created).</p>
+<p>How to observe the impact:</p>
+<p>1. Run the script with processed_data.csv (Clean data)</p>
+<p>2. Run the script with garbage_data.csv (Poisoned data)</p>
+<p>3. Compare the two responses</p>
+<p>Warning: Observe how the duplicate IDs and mixed data types cause the Agent to return hallucinated results. For example, it may describe a product as a &#34;Laptop Banana&#34; by mixing up rows.</p>
+<p>This is exactly what happens in production when data quality is ignored.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Summary &amp; Deliverables" duration="0">
+        <p>Duration: 0:05:00</p>
+<p>Fill out the following table based on your observations:</p>
+<p>Scenario | Agent Response | Accuracy (1-10) | Notes</p>
+<p>Clean Data | | |</p>
+<p>Garbage Data | | |</p>
+<p>Key takeaway:</p>
+<p>Most students focus on writing better prompts. Today we proved that Quality Data is more important than Quality Prompt.</p>
+<p>Garbage In = Garbage Out. Always validate your data before feeding it to an AI Agent.</p>
+<p>What to submit:</p>
+<p>1. Your completed observation table</p>
+<p>2. Screenshot of your Agent response with clean data</p>
+<p>3. Screenshot of your Agent response with garbage data</p>
 
 
       </google-codelab-step>
